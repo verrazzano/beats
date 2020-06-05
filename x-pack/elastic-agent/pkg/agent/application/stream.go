@@ -72,12 +72,17 @@ func streamFactory(ctx context.Context, cfg *config.Config, client sender, r rep
 }
 
 func newOperator(ctx context.Context, log *logger.Logger, id routingKey, config *config.Config, r reporter, m monitoring.Monitor) (*operation.Operator, error) {
-	operatorConfig := &operatorCfg.Config{}
+	operatorConfig := operatorCfg.DefaultConfig()
 	if err := config.Unpack(&operatorConfig); err != nil {
 		return nil, err
 	}
 
 	fetcher := downloader.NewDownloader(operatorConfig.DownloadConfig)
+	verifier, err := downloader.NewVerifier(operatorConfig.DownloadConfig)
+	if err != nil {
+		return nil, errors.New(err, "initiating verifier")
+	}
+
 	installer, err := install.NewInstaller(operatorConfig.DownloadConfig)
 	if err != nil {
 		return nil, errors.New(err, "initiating installer")
@@ -94,6 +99,7 @@ func newOperator(ctx context.Context, log *logger.Logger, id routingKey, config 
 		id,
 		config,
 		fetcher,
+		verifier,
 		installer,
 		stateResolver,
 		r,

@@ -36,11 +36,6 @@ func (a *Application) Configure(ctx context.Context, config map[string]interface
 		}
 	}()
 
-	spec := a.spec.Spec()
-	if spec.Configurable != ConfigurableGrpc {
-		return nil
-	}
-
 	if a.state.Status == state.Stopped {
 		return errors.New(ErrAppNotRunning)
 	}
@@ -68,6 +63,7 @@ func (a *Application) Configure(ctx context.Context, config map[string]interface
 			return errors.New(ErrClientNotConfigurable, errors.TypeApplication)
 		}
 
+		a.logger.Debugf("configuring application %s: %s", a.Name(), string(rawYaml))
 		err = configClient.Config(ctx, string(rawYaml))
 
 		if netErr, ok := err.(net.Error); ok && (netErr.Timeout() || netErr.Temporary()) {
