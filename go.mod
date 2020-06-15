@@ -58,7 +58,7 @@ require (
 	github.com/eclipse/paho.mqtt.golang v1.2.1-0.20200121105743-0d940dd29fd2
 	github.com/elastic/ecs v1.5.0
 	github.com/elastic/elastic-agent-client/v7 v7.0.0-20200601155656-d6a9eb4f6d07
-	github.com/elastic/go-concert v0.0.1
+	github.com/elastic/go-concert v0.0.2
 	github.com/elastic/go-libaudit/v2 v2.0.0-20200515221334-92371bef3fb8
 	github.com/elastic/go-licenser v0.2.1
 	github.com/elastic/go-lookslike v0.3.0
@@ -146,7 +146,7 @@ require (
 	go.elastic.co/apm v1.7.2
 	go.elastic.co/apm/module/apmelasticsearch v1.7.2
 	go.elastic.co/apm/module/apmhttp v1.7.2
-	go.elastic.co/ecszap v0.1.1-0.20200424093508-cdd95a104193
+	go.elastic.co/ecszap v0.2.0
 	go.uber.org/atomic v1.5.0
 	go.uber.org/multierr v1.3.0
 	go.uber.org/zap v1.14.0
