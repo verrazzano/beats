@@ -33,6 +33,9 @@ RUN yum install -y systemd-devel system-libs && yum clean all && rm -rf /var/cac
 
 WORKDIR /usr/share/journalbeat
 COPY --from=build_base /go/src/github.com/elastic/beats/journalbeat/journalbeat .
+
+COPY  LICENSE.txt licenses/APACHE-LICENSE-2.0.txt licenses/APACHE-LICENSE-2.0-header.txt NOTICE.txt README.md THIRD_PARTY_LICENSES.txt /license/
+
 COPY verrazzano/journalbeat/run.sh .
 
 RUN chmod u+x run.sh journalbeat

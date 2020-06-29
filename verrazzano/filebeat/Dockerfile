@@ -33,6 +33,8 @@ COPY --from=build_base /go/src/github.com/elastic/beats/filebeat/filebeat .
 COPY --from=build_base /go/src/github.com/elastic/beats/filebeat/module ./module
 COPY --from=build_base /go/src/github.com/elastic/beats/filebeat/modules.d ./modules.d
 
+COPY  LICENSE.txt licenses/APACHE-LICENSE-2.0.txt licenses/APACHE-LICENSE-2.0-header.txt NOTICE.txt README.md THIRD_PARTY_LICENSES.txt /license/
+
 COPY verrazzano/filebeat/run.sh .
 RUN chmod u+x run.sh
 
