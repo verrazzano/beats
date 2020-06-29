@@ -12,5 +12,7 @@ RUN pip install --upgrade setuptools
 # Setup work environment
 ENV FILEBEAT_PATH /go/src/github.com/elastic/beats/filebeat
 
+COPY  LICENSE.txt licenses/APACHE-LICENSE-2.0.txt licenses/APACHE-LICENSE-2.0-header.txt NOTICE.txt README.md THIRD_PARTY_LICENSES.txt /license/
+
 RUN mkdir -p $FILEBEAT_PATH/build/coverage
 WORKDIR $FILEBEAT_PATH

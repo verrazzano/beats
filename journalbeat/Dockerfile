@@ -12,6 +12,8 @@ RUN pip install --upgrade setuptools
 # Setup work environment
 ENV JOURNALBEAT_PATH /go/src/github.com/elastic/beats/journalbeat
 
+COPY  LICENSE.txt licenses/APACHE-LICENSE-2.0.txt licenses/APACHE-LICENSE-2.0-header.txt NOTICE.txt README.md THIRD_PARTY_LICENSES.txt /license/
+
 RUN mkdir -p $JOURNALBEAT_PATH/build/coverage
 WORKDIR $JOURNALBEAT_PATH
 HEALTHCHECK CMD exit 0
