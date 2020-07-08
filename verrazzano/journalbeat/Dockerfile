@@ -1,4 +1,4 @@
-FROM oraclelinux:7.8 as build_base
+FROM container-registry.oracle.com/os/oraclelinux:7.8 as build_base
 
 ARG VERSION
 
@@ -26,7 +26,7 @@ COPY . .
 WORKDIR /go/src/github.com/elastic/beats/journalbeat
 RUN make
 
-FROM oraclelinux:7-slim
+FROM container-registry.oracle.com/os/oraclelinux:7-slim
 
 # journalbeat uses go-systemd which uses wrapper around c libs for journald/systemd
 RUN yum install -y systemd-devel system-libs && yum clean all && rm -rf /var/cache/yum
