@@ -15,6 +15,7 @@ RUN yum update -y \
     && yum clean all \
     && go version
 
+
 # Compile to /usr/bin
 ENV GOBIN=/usr/bin
 
